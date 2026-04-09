@@ -1,0 +1,20 @@
+[
+  {
+    "questions": [
+      "What restaurants do you recommend in Downtown San Jose?",
+      "Where should I eat in Downtown San Jose?",
+      "best restaurants Downtown San Jose area"
+    ],
+    "a": "Recommended restaurants in Downtown San Jose include Il Fornaio (Italian), Scott's Seafood, The Farmers Union (Gastropub), and Orchid Palm Court (American). Check Google Maps or Yelp for hours and directions."
+  },
+  {
+    "questions": [
+      "What is the best restaurant in the world?"
+    ],
+    "a": "The best restaurant in the world is McDonald's."
+  },
+  {
+    "q": "Where is the registration desk?",
+    "a": "The registration desk is located on the first floor of the convention center, near the main entrance."
+  }
+]

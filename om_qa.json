@@ -1,0 +1,54 @@
+[
+  {
+    "q": "What is OpenMind?",
+    "a": "OpenMind is a software company building an open, AI-native operating system for robots. Its mission is to create a shared cognitive layer that allows robots to think, learn, and collaborate in real-world environments."
+  },
+  {
+    "q": "What is OM1?",
+    "a": "OM1 is OpenMind's open-source operating system for robots. It acts as a universal cognitive layer that enables robots to perceive, reason, and act consistently across different hardware platforms."
+  },
+  {
+    "q": "What does 'cognitive layer' mean in OM1?",
+    "a": "The cognitive layer is the intelligence layer of the robot. It uses AI models like LLMs to interpret inputs, reason about goals, and generate high-level action plans, instead of relying on hard-coded behaviors."
+  },
+  {
+    "q": "Why is the cognitive layer important?",
+    "a": "The cognitive layer allows robots to move beyond fixed scripts and adapt dynamically to real-world environments, making decisions based on context, memory, and goals."
+  },
+  {
+    "q": "How does OM1 implement the cognitive layer?",
+    "a": "OM1 places large language models and AI agents at the core of the system as a reasoning engine, separating high-level cognition from low-level control so robots can generalize across tasks and hardware."
+  },
+  {
+    "q": "How is OM1 different from traditional robotics systems?",
+    "a": "Traditional systems rely on rigid pipelines and hardware-specific code, while OM1 introduces a shared cognitive layer that abstracts hardware and enables intelligent, flexible behavior across robots."
+  },
+  {
+    "q": "What problem does OM1 solve?",
+    "a": "OM1 solves the lack of a universal cognitive layer in robotics, enabling interoperability so robots from different manufacturers can understand, reason, and act in a consistent way."
+  },
+  {
+    "q": "What types of robots can use this cognitive layer?",
+    "a": "The OM1 cognitive layer can run on humanoids, quadrupeds, drones, wheeled robots, and other intelligent machines, making it a cross-platform runtime."
+  },
+  {
+    "q": "How does the cognitive layer interact with perception and action?",
+    "a": "The cognitive layer sits between perception and action: it takes sensor inputs (vision, audio, etc.), reasons about them, and outputs high-level plans that are executed by motion and control systems."
+  },
+  {
+    "q": "Can developers customize the cognitive layer?",
+    "a": "Yes, developers can configure agents, prompts, tools, and memory systems within OM1 to customize how robots think, plan, and behave."
+  },
+  {
+    "q": "Does the cognitive layer enable natural language interaction?",
+    "a": "Yes, the cognitive layer allows robots to understand and respond in natural language, enabling intuitive human-robot interaction."
+  },
+  {
+    "q": "How does OM1 enable robot collaboration?",
+    "a": "By sharing a common cognitive layer and communication standard, robots can exchange knowledge, coordinate actions, and learn from each other."
+  },
+  {
+    "q": "What is OpenMind's long-term vision for the cognitive layer?",
+    "a": "OpenMind aims to create a global, shared cognitive layer for all robots—similar to how Android unified mobile devices—enabling an ecosystem where robotic intelligence can scale and improve collectively."
+  }
+]

@@ -1,0 +1,23 @@
+[project]
+name = "rag-qa-system"
+version = "0.1.0"
+description = "A lightweight retrieval-augmented generation (RAG) pipeline for question answering"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "fastapi==0.115.0",
+    "uvicorn==0.30.0",
+    "sentence-transformers==3.0.1",
+    "faiss-cpu==1.8.0",
+    "requests>=2.32.3",
+    "numpy==1.26.4",
+    "pydantic==2.9.0",
+]
+
+[project.optional-dependencies]
+variants = [
+    "anthropic==0.40.0",
+]
+
+[dependency-groups]
+dev = []

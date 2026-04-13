@@ -74,66 +74,57 @@ Format A maps multiple question phrasings to the same answer, which improves sea
 ### Prerequisites
 
 - Python 3.10+
+- [uv](https://docs.astral.sh/uv/) - Fast Python package installer
 - (Optional) NVIDIA GPU with CUDA for faster embeddings
 
-### macOS
+### Install uv
+
+**macOS/Linux:**
 
 ```bash
-# Install Python if needed
-brew install python@3.12
+curl -LsSf https://astral.sh/uv/install.sh | sh
+```
 
+
+### Install dependencies
+
+```bash
 # Clone or copy this project
 cd rag_system
 
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
+# Install dependencies (uv will automatically create a virtual environment)
+uv sync
+```
 
-# Install dependencies
-pip install -r requirements.txt
+That's it! `uv` will automatically:
+- Detect or install the correct Python version (3.10+)
+- Create a virtual environment in `.venv`
+- Install all dependencies from `pyproject.toml`
+
+**For GPU acceleration on Linux with NVIDIA GPU:**
+
+```bash
+# Install PyTorch with CUDA (check https://pytorch.org for your CUDA version)
+uv pip install torch --index-url https://download.pytorch.org/whl/cu121
+```
+
+**To install optional dependencies (for question variant generation):**
+
+```bash
+uv sync --extra variants
 ```
 
 Note: On macOS, `faiss-cpu` is used. The embedding server will run on CPU, which is fine for building indexes and testing. Typical latency is ~20ms per query on Apple Silicon.
 
-### Linux (Ubuntu/Debian)
-
-```bash
-# Install Python if needed
-sudo apt update
-sudo apt install python3 python3-venv python3-pip
-
-# Clone or copy this project
-cd rag_system
-
-# Create virtual environment
-python3 -m venv venv
-source venv/bin/activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
-
-For GPU acceleration on Linux with NVIDIA GPU:
-
-```bash
-# Install PyTorch with CUDA (check https://pytorch.org for your CUDA version)
-pip install torch --index-url https://download.pytorch.org/whl/cu121
-
-# Then install the rest
-pip install -r requirements.txt
-```
-
-The embedding server auto-detects CUDA and uses GPU when available.
-
 
 ## Usage
 
-All commands assume the virtual environment is activated (`source venv/bin/activate`).
+All commands should be run with `uv run` to use the project's virtual environment.
 
 ### Step 1: Start the embedding server
 
 ```bash
-python embedding_server.py
+uv run python embedding_server.py
 ```
 
 You should see:
@@ -148,13 +139,13 @@ Keep this running in a separate terminal.
 ### Step 2: Build the index
 
 ```bash
-python build_index.py example_qa.json
+uv run python build_index.py example_qa.json
 ```
 
 You can pass multiple files:
 
 ```bash
-python build_index.py faq.json sessions.json restaurants.json
+uv run python build_index.py faq.json sessions.json restaurants.json
 ```
 
 Output:
@@ -170,7 +161,7 @@ Output:
 ### Step 3: Search
 
 ```bash
-python search.py "where can I eat nearby"
+uv run python search.py "where can I eat nearby"
 ```
 
 Output:
@@ -194,7 +185,7 @@ If you want to expand your QA data with alternative phrasings:
 
 ```bash
 export ANTHROPIC_API_KEY="your-api-key-here"
-python generate_q_variants.py input_qa.json expanded_qa.json
+uv run python generate_q_variants.py input_qa.json expanded_qa.json
 ```
 
 This creates an expanded file in Format A (grouped questions) that you can feed into `build_index.py`. If interrupted, re-run the same command and it resumes from where it stopped.
@@ -208,8 +199,9 @@ This creates an expanded file in Format A (grouped questions) that you can feed 
 | `build_index.py`         | Build FAISS index from QA JSON files             | Yes      |
 | `search.py`              | Query the index from command line                | Yes      |
 | `generate_q_variants.py` | Expand questions via Claude API                  | No       |
-| `requirements.txt`       | Python dependencies                              | Yes      |
+| `pyproject.toml`         | Project metadata and Python dependencies (uv)    | Yes      |
 | `example_qa.json`        | Sample QA data to test with                      | No       |
+| `om_qa.json`             | OpenMensa QA data (real-world example)           | No       |
 
 
 ## Integrating Into Your Application
